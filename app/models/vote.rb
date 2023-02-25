@@ -1,4 +1,3 @@
 class Vote < ApplicationRecord
-  belongs_to :option
-  belongs_to :participant
+  belongs_to :option, :participant
 end
