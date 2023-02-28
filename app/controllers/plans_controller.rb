@@ -20,8 +20,8 @@ class PlansController < ApplicationController
   end
 
   def show
-    @poll = Poll.new
-    @message = Message.new
+    # @poll = Poll.new
+    # @message = Message.new
 
   end
 
