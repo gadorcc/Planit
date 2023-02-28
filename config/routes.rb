@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'options/create'
   get 'messages/new'
   get 'messages/create'
   get 'polls/new'
