@@ -38,13 +38,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_25_171100) do
 
   create_table "options", force: :cascade do |t|
     t.bigint "poll_id", null: false
+    t.string "choice"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["poll_id"], name: "index_options_on_poll_id"
   end
 
   create_table "participants", force: :cascade do |t|
+
     t.string "status"
+    t.string "status", default: "Pending"
     t.bigint "user_id", null: false
     t.bigint "plan_id", null: false
     t.datetime "created_at", null: false
