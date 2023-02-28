@@ -13,13 +13,16 @@ class PlansController < ApplicationController
     # @plan.planner_id = current_user
     @plan.save!
     # redirect_to plan_path(@plan)
-
   end
 
   def edit
+    @participant = Participant.new
   end
 
   def show
+    @poll = Poll.new
+    @message = Message.new
+
   end
 
   def update
