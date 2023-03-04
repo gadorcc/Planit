@@ -1,0 +1,100 @@
+.menu-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border-color: $hot-pink;
+  background-color: $moonstone;
+  z-index: 9999;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-btn.active {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 80px;
+  height: 80px;
+  background-color: $moonstone;
+}
+
+.menu-btn.active:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: $moonstone;
+  transition: all 0.3s ease-in-out;
+  transform: translate(0, 0);
+}
+
+.menu-btn.active:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -26px;
+  left: -40px;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background-color: #379cb0;
+  transition: all 0.3s ease-in-out;
+  transform: translate(0, 0);
+}
+
+.menu-btn.active span {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: $hot-pink;
+  color: #fff;
+  text-align: center;
+  line-height: 45px;
+  font-size: 24px;
+  transition: all 0.3s ease-in-out;
+  transform: translate(0, 0);
+}
+
+.menu-btn.active span:nth-child(1) {
+  transform: translate(-43px, -40px);
+  -webkit-transform: translate(-43px, -40px);
+  -moz-transform: translate(-43px, -40px);
+  -ms-transform: translate(-43px, -40px);
+  -o-transform: translate(-43px, -40px);
+}
+
+.menu-btn.active span:nth-child(2) {
+  transform: translate(-90px, 35px);
+  -webkit-transform: translate(-90px, 35px);
+  -moz-transform: translate(-90px, 35px);
+  -ms-transform: translate(-90px, 35px);
+  -o-transform: translate(-90px, 35px);
+}
+
+.menu-btn.active span:nth-child(3) {
+  transform: translate(36px, -80px);
+  -webkit-transform: translate(36px, -80px);
+  -moz-transform: translate(36px, -80px);
+  -ms-transform: translate(36px, -80px);
+  -o-transform: translate(36px, -80px);
+}
+
+.menu-btn span {
+  position: fixed;
+  top: -50px;
+}
+
+.menu-btn {
+  color: white !important;
+}
