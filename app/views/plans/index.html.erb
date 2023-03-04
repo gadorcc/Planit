@@ -1,2 +1,38 @@
-<h1>Plans#index</h1>
+<div class="container-fluid">
+<p>Plans#index</p>
 <p>Find me in app/views/plans/index.html.erb</p>
+<h1>Your Plans</h1>
+<p>Upcoming events</p>
+<div class="row gx-0">
+<%= render "shared/imgcard" %>
+</div>
+<div class="row gx-0">
+<%= render "shared/smcard" %>
+</div>
+<div class="row gx-0">
+<p>Make a new plan</p>
+<div class="row flex-nowrap overflow-auto">
+<%= render "shared/evntcard" %>
+<%= render "shared/evntcard" %>
+<%= render "shared/evntcard" %>
+<%= render "shared/evntcard" %>
+<%= render "shared/evntcard" %>
+<%= render "shared/evntcard" %>
+<%= render "shared/evntcard" %>
+</div>
+<div>
+<button class="menu-btn">+
+  <span><i class="bi bi-plus-circle"></i></span>
+  <span><i class="bi bi-pass"></i></span>
+  <span><i class="bi bi-patch-question"></i></span>
+</button>
+<script>
+const menuBtn = document.querySelector('.menu-btn');
+
+menuBtn.addEventListener('click', function() {
+  this.classList.toggle('active');
+});
+</script>
+
+</div>
+</div>
