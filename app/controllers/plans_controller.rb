@@ -22,6 +22,7 @@ class PlansController < ApplicationController
   def show
       @users = User.all
       @participant = Participant.new
+      @participants = Participant.all
     # @poll = Poll.new
     # @message = Message.new
     # @option = Option.new

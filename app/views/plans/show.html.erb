@@ -2,3 +2,6 @@
 <p>Find me in app/views/plans/show.html.erb</p>
 
 <%= render "shared/add_friends_form" %>
+<% @participants.each do |participant| %>
+  <%= participant.user.nickname %>
+<% end %>
