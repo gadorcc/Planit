@@ -10,18 +10,20 @@ class PlansController < ApplicationController
 
   def create
     @plan = Plan.new(plan_params)
-    # @plan.planner_id = current_user
+    @plan.planner_id = current_user.id
     @plan.save!
-    # redirect_to plan_path(@plan)
+    redirect_to plan_path(@plan)
   end
 
   def edit
-    @participant = Participant.new
+    # @participant = Participant.new
   end
 
   def show
-    @poll = Poll.new
-    @message = Message.new
+      @users = User.all
+      @participant = Participant.new
+    # @poll = Poll.new
+    # @message = Message.new
     # @option = Option.new
 
   end
@@ -45,4 +47,9 @@ class PlansController < ApplicationController
   def plan_params
     params.require(:plan).permit(:title, :location, :cost, :description)
   end
+
+  def user_params
+    params.require(:user).permit(:nickname)
+  end
+
 end

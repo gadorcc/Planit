@@ -1,7 +1,7 @@
 <%= simple_form_for (@plan) do |f| %>
   <%= f.input :title, label: "Plan's name"%>
   <%= f.input :description %>
-  <%= f.input :participants, label: 'Who would you like to invite?' %>
+  <%# <%= f.input :participants, label: 'Who would you like to invite?' %> %>
   <%= f.input :cost, label: 'Budget per friend' %>
   <%= f.input :location %>
   <%= submit_tag "Planit", class: "btn btn-primary" %>
