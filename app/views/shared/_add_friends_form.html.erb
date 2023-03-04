@@ -1,0 +1,11 @@
+<%= form_with(model: @user, local: true) do |f| %>
+  <div class="form-group">
+    <%= f.text_field :user, list: 'user-list', autocomplete: 'off' %>
+    <datalist id="user-list">
+      <% for user in User.select(:nickname) %>
+        <option><%= user.nickname %></option>
+      <% end %>
+    </datalist>
+    <%= submit_tag "Add friend", class: "btn btn-primary" %>
+  </div>
+<% end %>
