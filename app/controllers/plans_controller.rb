@@ -2,6 +2,7 @@ class PlansController < ApplicationController
   before_action :set_plan, only: %i[show edit update destroy]
   def index
     @plans = Plan.all
+    # @participant = Participant.find(params[:plan_id])
   end
 
   def new
@@ -23,7 +24,6 @@ class PlansController < ApplicationController
     @poll = Poll.new
     @message = Message.new
     # @option = Option.new
-
   end
 
   def update

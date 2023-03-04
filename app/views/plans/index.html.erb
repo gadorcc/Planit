@@ -1,17 +1,28 @@
 <h1>Plans#index</h1>
 <p>Find me in app/views/plans/index.html.erb</p>
 <h1>Upcoming events</h1>
-  <% @plans.each do |plan| %>
-    <h2><%= plan.title %></h2>
-    #if end day does not equal start day display start_datetime and end_datetime
-      <p><%= plan.start_datetime.strftime('%a%-d%b%1%P') %> - <%= plan.end_datetime.strftime('%a%-d%b%1%P') %></p>
-      <%# <p><%= plan.start_datetime.strftime('%a%-d%b%1%P') %>
-      <%# <%= plan.end_datetime.strftime('%1%P') %>
-      <p><%= plan.description %></p>
-     #status
-      #messages
-      <% end %>
-    <% @plans.each do |plan| %>
-      <h2><%= plan.title %></h2>
-
+<div>
+    <% @plans = Plan.order(start_datetime: :asc) %>
+    <p><%= @plans.first.title %></p>
+      <% if @plans.first.start_datetime.strftime('%-d') < @plans.first.end_datetime.strftime('%-d') %>
+    <p><%= @plans.first.start_datetime.strftime('%a %-d %b %I:%M%P') %> - <%= @plans.first.end_datetime.strftime('%a %-d %b %I:%M%P') %></p>
+      <% else %>
+      <p><%= @plans.first.start_datetime.strftime('%a %-d %b %I:%M%P') %> - <%= @plans.first.end_datetime.strftime('%I:%M%P') %></p>
+    <% end %>
+    <%# <p><%= @plans.first.location %>
+    <p><%= @plans.first.description %></p>
+    <p><%= @plans.first.participants.select { |participant| participant.id == current_user.id }.first.status %>
+</div>
+<div>
+  <% @test = @plans.to_a.slice(1, @plans.length) %>
+  <% @test.each do |plan| %>
+    <%= plan.title %>
+    <% plan.participants.each do |participant| %>
+      <%= participant.status if participant.user_id == current_user.id %>
+    <% end %>
+  <% end %>
+</div>
+<div>
 <h1>Make a new plan</h1>
+    <%= link_to "Create a Plan", new_plan_path %>
+</div>
