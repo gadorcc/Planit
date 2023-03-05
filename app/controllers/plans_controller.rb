@@ -11,8 +11,10 @@ class PlansController < ApplicationController
   def create
     @plan = Plan.new(plan_params)
     @plan.planner_id = current_user.id
+    @plan.image = api_image
     @plan.save!
     redirect_to plan_path(@plan)
+
   end
 
   def edit
@@ -53,4 +55,10 @@ class PlansController < ApplicationController
     params.require(:user).permit(:nickname)
   end
 
+  def api_image
+    @client = Pexels::Client.new('Tzn24mPTGpYoyu8PH0dfAwDlnMdJYkAzFFCsexOuNqchgyiq1Bvut5mC')
+    @photo = @client.photos.search("#{@plan.title}", per_page: 1).first
+    # photo = @client.photos[@photo.id]
+    @plan.image = @photo.url
+  end
 end
