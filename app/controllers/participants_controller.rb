@@ -9,7 +9,7 @@ class ParticipantsController < ApplicationController
     if @participant.save
       redirect_to plan_path(@plan)
     else
-      render "plans/show", status: :unprocessable_entity
+      redirect_to plan_path(@plan), status: :unprocessable_entity
     end
   end
 
@@ -18,5 +18,4 @@ class ParticipantsController < ApplicationController
   def user_params
     params.require(:user).permit(:nickname)
   end
-
 end
