@@ -56,7 +56,7 @@ class PlansController < ApplicationController
   end
 
   def api_image
-    @client = Pexels::Client.new('Tzn24mPTGpYoyu8PH0dfAwDlnMdJYkAzFFCsexOuNqchgyiq1Bvut5mC')
+    @client = Pexels::Client.new(ENV.fetch('PEXELS_API_KEY'))
     @photo = @client.photos.search("#{@plan.title}", per_page: 1).first
     # photo = @client.photos[@photo.id]
     @plan.image = @photo.url
