@@ -20,13 +20,23 @@ class PlansController < ApplicationController
   end
 
   def show
-      @users = User.all
-      @participant = Participant.new
-      @participants = Participant.all
+    @users = User.all
+    @participant = Participant.new
+    @participants = @plan.participants
+    @plans = @plan
+    @markers =
+      [{
+        lat: @plan.latitude,
+        lng: @plan.longitude
+      },
+      {
+        lat: @plan.latitude,
+        lng: @plan.longitude
+      }]
+
     # @poll = Poll.new
     # @message = Message.new
     # @option = Option.new
-
   end
 
   def update
