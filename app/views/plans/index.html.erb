@@ -1,6 +1,33 @@
 <div class="container-fluid">
 <p>Plans#index</p>
 <p>Find me in app/views/plans/index.html.erb</p>
+
+<h1>Upcoming events</h1>
+<div>
+    <% @plans = Plan.order(start_datetime: :asc) %>
+    <p><%= @plans.first.title %></p>
+      <% if @plans.first.start_datetime.strftime('%-d') < @plans.first.end_datetime.strftime('%-d') %>
+    <p><%= @plans.first.start_datetime.strftime('%a %-d %b %I:%M%P') %> - <%= @plans.first.end_datetime.strftime('%a %-d %b %I:%M%P') %></p>
+      <% else %>
+      <p><%= @plans.first.start_datetime.strftime('%a %-d %b %I:%M%P') %> - <%= @plans.first.end_datetime.strftime('%I:%M%P') %></p>
+    <% end %>
+    <%# <p><%= @plans.first.location %>
+    <p><%= @plans.first.description %></p>
+    <p><%= @plans.first.participants.select { |participant| participant.id == current_user.id }.first.status %>
+</div>
+<div>
+  <% @test = @plans.to_a.slice(1, @plans.length) %>
+  <% @test.each do |plan| %>
+    <%= plan.title %>
+    <% plan.participants.each do |participant| %>
+      <%= participant.status if participant.user_id == current_user.id %>
+    <% end %>
+  <% end %>
+</div>
+<div>
+<h1>Make a new plan</h1>
+    <%= link_to "Create a Plan", new_plan_path %>
+
 <h1>Your Plans</h1>
 <p>Upcoming events</p>
 <div class="row gx-0">
@@ -35,4 +62,5 @@ menuBtn.addEventListener('click', function() {
 </script>
 
 </div>
+
 </div>
