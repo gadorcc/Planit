@@ -13,7 +13,7 @@
     <% end %>
     <%# <p><%= @plans.first.location %>
     <p><%= @plans.first.description %></p>
-    <p><%= @plans.first.participants.select { |participant| participant.id == current_user.id }.first&.status %></p>
+    <%# <p><%= @plans.first.participants.select { |participant| participant.id == current_user.id }.first&.status %>
 </div>
 <div>
   <% @test = @plans.to_a.slice(1, @plans.length) %>
