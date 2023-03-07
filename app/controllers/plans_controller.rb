@@ -11,18 +11,36 @@ class PlansController < ApplicationController
 
   def create
     @plan = Plan.new(plan_params)
-    # @plan.planner_id = current_user
+    @plan.planner_id = current_user.id
+    @plan.image = api_image
     @plan.save!
-    # redirect_to plan_path(@plan)
+    redirect_to plan_path(@plan)
+
   end
 
   def edit
-    @participant = Participant.new
+    # @participant = Participant.new
   end
 
   def show
-    @poll = Poll.new
-    @message = Message.new
+
+    @users = User.all
+    @participant = Participant.new
+    @participants = @plan.participants
+    @plans = @plan
+    @markers =
+      [{
+        lat: @plan.latitude,
+        lng: @plan.longitude
+      },
+      {
+        lat: @plan.latitude,
+        lng: @plan.longitude
+      }]
+
+    # @poll = Poll.new
+    # @message = Message.new
+
     # @option = Option.new
   end
 
@@ -43,6 +61,17 @@ class PlansController < ApplicationController
   end
 
   def plan_params
-    params.require(:plan).permit(:title, :location, :cost, :description)
+    params.require(:plan).permit(:title, :location, :cost, :description, :start_datetime, :end_datetime)
+  end
+
+  def user_params
+    params.require(:user).permit(:nickname)
+  end
+
+  def api_image
+    @client = Pexels::Client.new(ENV.fetch('PEXELS_API_KEY'))
+    @photo = @client.photos.search("#{@plan.title}", per_page: 1).first
+    # photo = @client.photos[@photo.id]
+    @plan.image = @photo.src["small"]
   end
 end

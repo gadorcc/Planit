@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: $dutch-white;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -8,5 +8,15 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 95px;
+}
+
+.navbar-toggler {
+  border: solid 1px $moonstone !important;
+}
+
+.navbar-toggler:focus {
+  outline: $moonstone !important;
+  color: $moonstone !important;
+  border-color: $moonstone !important;
 }
