@@ -2,7 +2,6 @@ class PlansController < ApplicationController
   before_action :set_plan, only: %i[show edit update destroy]
   def index
     @plans = Plan.all
-    # @participant = Participant.find(params[:plan_id])
   end
 
   def new
@@ -14,8 +13,8 @@ class PlansController < ApplicationController
     @plan.planner_id = current_user.id
     @plan.image = api_image
     @plan.save!
+    sets_user_participant(@plan)
     redirect_to plan_path(@plan)
-
   end
 
   def edit
@@ -73,5 +72,13 @@ class PlansController < ApplicationController
     @photo = @client.photos.search("#{@plan.title}", per_page: 1).first
     # photo = @client.photos[@photo.id]
     @plan.image = @photo.src["small"]
+  end
+
+  def sets_user_participant(plan)
+    participant = Participant.new
+    participant.user_id = current_user.id
+    participant.plan_id = plan.id
+    participant.status = "Going"
+    participant.save!
   end
 end
