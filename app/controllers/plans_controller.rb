@@ -23,7 +23,6 @@ class PlansController < ApplicationController
   end
 
   def show
-
     @users = User.all
     @participant = Participant.new
     @participants = @plan.participants
@@ -37,10 +36,8 @@ class PlansController < ApplicationController
         lat: @plan.latitude,
         lng: @plan.longitude
       }]
-
     # @poll = Poll.new
     # @message = Message.new
-
     # @option = Option.new
   end
 
