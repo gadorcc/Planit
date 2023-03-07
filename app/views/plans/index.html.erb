@@ -15,15 +15,7 @@
     <p><%= @plans.first.description %></p>
     <%# <p><%= @plans.first.participants.select { |participant| participant.id == current_user.id }.first&.status %>
 </div>
-<div>
-  <% @test = @plans.to_a.slice(1, @plans.length) %>
-  <% @test.each do |plan| %>
-    <%= plan.title %>
-    <% plan.participants.each do |participant| %>
-      <%= participant.status if participant.user_id == current_user.id %>
-    <% end %>
-  <% end %>
-</div>
+
 <div>
 <h1>Make a new plan</h1>
     <%= link_to "Create a Plan", new_plan_path %>
