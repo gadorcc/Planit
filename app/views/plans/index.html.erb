@@ -16,7 +16,7 @@
     <%# <p><%= @plans.first.participants.select { |participant| participant.id == current_user.id }.first&.status %>
 </div>
 <div>
-  <%# <% @test = @plans.to_a.slice(1, @plans.length) %>
+  <% @test = @plans.to_a.slice(1, @plans.length)
   <% @test.each do |plan| %>
     <%= plan.title %>
     <% plan.participants.each do |participant| %>
