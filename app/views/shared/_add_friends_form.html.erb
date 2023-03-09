@@ -1,11 +1,12 @@
+<!-- New form styling -->
 <%= form_with(model: [@plan, @participant], local: true) do |f| %>
-  <div class="form-group">
-    <%= f.text_field :user, list: 'user-list', autocomplete: 'off' %>
+  <div class="form-group d-flex align-items-center mb-3 mt-3">
+    <%= submit_tag "+", class: "btn btn-primary rounded-circle me-2" %>
+    <%= f.text_field :user, list: 'user-list', autocomplete: 'off', class: "form-control" %>
     <datalist id="user-list">
       <% for user in User.all.select(:nickname) %>
         <option><%= user.nickname %></option>
       <% end %>
     </datalist>
-    <%= submit_tag "Add friend", class: "btn btn-primary" %>
   </div>
 <%end%>
