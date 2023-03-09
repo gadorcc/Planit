@@ -1,1 +1,39 @@
 // Specific CSS for your home-page
+  #changing-text {
+    animation: change-colors 2s infinite;
+  }
+
+  @keyframes change-colors {
+    0% {
+      color: #ff2e63;
+      background-color: #fff;
+    }
+
+    25% {
+      color: #ffd700;
+      background-color: #fff;
+    }
+
+    50% {
+      color: #1e90ff;
+      background-color: #fff;
+    }
+
+    75% {
+      color: #32cd32;
+      background-color: #fff;
+    }
+
+    100% {
+      color: #ff69b4;
+      background-color: #fff;
+    }
+  }
+#changing-text {
+font-size: 50px;
+}
+.card-cover {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
