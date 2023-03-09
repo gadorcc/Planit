@@ -10,6 +10,9 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+img.img-fluid.rounded-start {
+  height: 100%;
+}
 .row.overflow-auto::-webkit-scrollbar {
   display: none;
 }
