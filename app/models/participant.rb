@@ -8,3 +8,5 @@ class Participant < ApplicationRecord
   validates :user_id, uniqueness: { scope: :plan_id,
     message: "not the same friend" }
 end
+
+# validates :quote_requestor, inclusion: { in: Participant::STATUSES }

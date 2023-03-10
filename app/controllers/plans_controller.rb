@@ -3,9 +3,9 @@ class PlansController < ApplicationController
   def index
     # @plans = Plan.all
     @user = current_user
-    @plans = Plan.order(start_datetime: :asc)
-                  .joins(:participants).where(participants: { user_id: current_user.id})
-                  .or(Plan.joins(:participants).where(participants: { user_id: current_user.id}))
+    @plans = Plan.order(start_datetime: :asc).joins(:participants).where(participants: { user_id: current_user.id}).or(Plan.where(planner_id: current_user.id)).distinct
+    @participant = Participant.find_by(user_id: current_user.id)
+
   end
 
   def new
