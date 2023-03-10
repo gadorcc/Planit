@@ -1,8 +1,9 @@
 class PlansController < ApplicationController
   before_action :set_plan, only: %i[show edit update destroy]
   def index
-    @plans = Plan.all
-
+    # @plans = Plan.all
+    @user = current_user
+    @plans = Plan.order(start_datetime: :asc).joins(:participants).where(participants: { user_id: current_user.id})
   end
 
   def new
@@ -11,8 +12,7 @@ class PlansController < ApplicationController
 
   def create
     @plan = Plan.new(plan_params)
-    @plan.planner_id = current_user.id
-    @planner_id.status = "Going"
+    @plan.planner_id = current_user
     @plan.image = api_image
     @plan.save!
     # sets_user_participant(@plan)
