@@ -13,6 +13,21 @@ class ParticipantsController < ApplicationController
     end
   end
 
+  def update_status
+    @participant = Participant.find(params[:id])
+    if params[:status].present?
+      if params[:status] == "Pending"
+        @participant.update(status: "Going")
+      elsif params[:status] == "Going"
+        @participant.update(status: "NotGoing")
+      elsif params[:status] == "NotGoing"
+        @participant.update(status: "Maybe")
+      else params[:status] == "Maybe"
+        @participant.update(status: "Going")
+      end
+    end
+  end
+
   private
 
   def user_params

@@ -16,6 +16,10 @@ Rails.application.routes.draw do
     resources :activities, only: [:new, :create]
     resources :polls, only: [:new, :create]
     resources :messages, only: [:new, :create]
-    resources :participants, only: [:new, :create]
+    resources :participants, only: [:new, :create] do
+      member do
+        patch :update_status
+      end
+    end
   end
 end

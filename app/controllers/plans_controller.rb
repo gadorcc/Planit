@@ -3,9 +3,14 @@ class PlansController < ApplicationController
   def index
     # @plans = Plan.all
     @user = current_user
-    @plans = Plan.order(start_datetime: :asc).joins(:participants).where(participants: { user_id: current_user.id}).or(Plan.where(planner_id: current_user.id)).distinct
-    @participant = Participant.find_by(user_id: current_user.id)
+    @plans = Plan.order(start_datetime: :asc)
+    @plans_active = @plans.where(start_datetime: (Time.now)..)
+    @plans_planner = @plans_active.where(planner_id: current_user.id)
+    @plans_participant = @plans_active.joins(:participants).where(participants: { user_id: current_user.id})
+    @plans_active_all = @plans_planner && @plans_participant
 
+
+    @participant = Participant.find_by(user_id: current_user.id)
   end
 
   def new
@@ -73,13 +78,5 @@ class PlansController < ApplicationController
     @photo = @client.photos.search("#{@plan.title}", per_page: 1).first
     # photo = @client.photos[@photo.id]
     @plan.image = @photo.src["large"]
-  end
-
-  def sets_user_participant(plan)
-    participant = Participant.new
-    participant.user_id = current_user.id
-    participant.plan_id = plan.id
-    participant.status = "Going"
-    participant.save!
   end
 end
