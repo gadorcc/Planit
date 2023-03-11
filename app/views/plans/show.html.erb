@@ -4,6 +4,7 @@
   <div class="card-body">
 <h1 class="display-6"><%= @plan.title %> </h1>
     <p> <%= @plan.description %> </p>
+    <p> <%= render "shared/add_status_form" %> </p>
     <div class="d-flex align-items-center">
   <i class="bi bi-clock-fill"></i>
   <span class="ms-2"><%= @plan.start_datetime.strftime('%a %e %b %l:%M %p') %></span>
@@ -18,15 +19,14 @@
     <% @plan.participants.each do |participant| %>
       <small class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">
         <%= participant.user.nickname %>
+        <%= participant.status %>
       </small>
     <% end %>
   </div>
 </div>
 
-<%# <%= link_to update_status, update_status_plan_participant_path(participant), method: :patch %> %>
+
 <%= render "shared/add_friends_form" %>
-
-
 
 <div style="width: 100%; height: 600px;"
   data-controller="map"

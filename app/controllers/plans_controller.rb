@@ -10,7 +10,7 @@ class PlansController < ApplicationController
     @plans_active_all = @plans_planner && @plans_participant
     @plans_going_all = (@plans_participant.joins(:participants).where(participants: {status: "Going"})) && @plans_planner
     @plans_participant_status = (@plans_participant.joins(:participants).where.not(participants: {status: "Going"}))
-
+    @participant = Participant.all
     # @participant = Participant.find_by(user_id: current_user.id)
   end
 
@@ -23,7 +23,6 @@ class PlansController < ApplicationController
     @plan.planner_id = current_user.id
     @plan.image = api_image
     @plan.save!
-    # sets_user_participant(@plan)
     redirect_to plan_path(@plan)
   end
 
@@ -34,6 +33,7 @@ class PlansController < ApplicationController
   def show
     @users = User.all
     @participant = Participant.new
+    @current_participant = Participant.find_by(user: current_user)
     @participants = @plan.participants
     @plans = @plan
     @markers =

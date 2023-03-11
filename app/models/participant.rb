@@ -1,5 +1,5 @@
 class Participant < ApplicationRecord
-  STATUSES = %w[Pending Going NotGoing Maybe]
+  STATUSES = %w[Pending Going Not\Going Maybe]
   belongs_to :user
   belongs_to :plan
   has_many :plans, -> { order(start_datetime: :asc) }
@@ -8,5 +8,3 @@ class Participant < ApplicationRecord
   validates :user_id, uniqueness: { scope: :plan_id,
     message: "not the same friend" }
 end
-
-# validates :quote_requestor, inclusion: { in: Participant::STATUSES }
