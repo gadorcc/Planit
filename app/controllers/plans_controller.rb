@@ -8,9 +8,10 @@ class PlansController < ApplicationController
     @plans_planner = @plans_active.where(planner_id: current_user.id)
     @plans_participant = @plans_active.joins(:participants).where(participants: { user_id: current_user.id})
     @plans_active_all = @plans_planner && @plans_participant
+    @plans_going_all = (@plans_participant.joins(:participants).where(participants: {status: "Going"})) && @plans_planner
+    @plans_participant_status = (@plans_participant.joins(:participants).where.not(participants: {status: "Going"}))
 
-
-    @participant = Participant.find_by(user_id: current_user.id)
+    # @participant = Participant.find_by(user_id: current_user.id)
   end
 
   def new
