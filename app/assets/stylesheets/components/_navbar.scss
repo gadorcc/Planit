@@ -1,13 +1,13 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: $dutch-white;
+  background: $light-gray;
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-brand img {
   width: 95px;
 }
 
@@ -19,4 +19,13 @@
   outline: $moonstone !important;
   color: $moonstone !important;
   border-color: $moonstone !important;
+}
+
+.navbar-toggler img {
+  border-radius: 50%;
+  width: 30px;
+}
+
+.offcanvas-title img {
+  width: 75px;
 }
