@@ -6,6 +6,11 @@ gem 'flatpickr'
 gem 'pexels'
 gem "geocoder"
 
+# Required for uploading avatars
+gem 'file_validators'
+
+gem 'cloudinary'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4", ">= 7.0.4.2"
 gem 'faker'
