@@ -1,7 +1,17 @@
 class PlansController < ApplicationController
   before_action :set_plan, only: %i[show edit update destroy]
   def index
-    @plans = Plan.all
+    # @plans = Plan.all
+    @user = current_user
+    @plans = Plan.order(start_datetime: :asc)
+    @plans_active = @plans.where(start_datetime: (Time.now)..)
+    @plans_planner = @plans_active.where(planner_id: current_user.id)
+    @plans_participant = @plans_active.joins(:participants).where(participants: { user_id: current_user.id })
+    @plans_active_all = @plans_planner && @plans_participant
+    @plans_going_all = @plans_participant.joins(:participants).where(participants: { status: "Going" }) && @plans_planner
+    @plans_participant_status = @plans_participant.joins(:participants).where.not(participants: { status: "Going" })
+    @participant = Participant.all
+    # @participant = Participant.find_by(user_id: current_user.id)
   end
 
   def new
@@ -24,6 +34,7 @@ class PlansController < ApplicationController
   def show
     @users = User.all
     @participant = Participant.new
+    @current_participant = Participant.find_by(user: current_user)
     @participants = @plan.participants
     @plans = @plan
     @markers =
@@ -31,10 +42,10 @@ class PlansController < ApplicationController
         lat: @plan.latitude,
         lng: @plan.longitude
       },
-      {
-        lat: @plan.latitude,
-        lng: @plan.longitude
-      }]
+       {
+         lat: @plan.latitude,
+         lng: @plan.longitude
+       }]
     # @poll = Poll.new
     # @message = Message.new
     # @option = Option.new
@@ -68,7 +79,7 @@ class PlansController < ApplicationController
     @client = Pexels::Client.new(ENV.fetch('PEXELS_API_KEY'))
     @photo = @client.photos.search("#{@plan.title}", per_page: 1).first
     # photo = @client.photos[@photo.id]
-    @plan.image = @photo.src["small"]
+    @plan.image = @photo.src["large"]
   end
 
   def sets_user_participant(plan)
