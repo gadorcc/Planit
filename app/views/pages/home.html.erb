@@ -14,11 +14,11 @@
                 <%= image_tag 'avatarhome1.png', alt: 'Yes', width: 32, height: 32, class: 'rounded-circle border border-white' %>
               </li>
               <li class="d-flex align-items-center me-3">
-                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
-                <small>Earth</small>
+                <i class="bi bi-geo-fill me-2"></i>
+                <small> Earth</small>
               </li>
               <li class="d-flex align-items-center">
-                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
+                <i class="bi bi-calendar3 me-2"></i>
                 <small>3d</small>
               </li>
             </ul>
@@ -35,11 +35,11 @@
                <%= image_tag 'avatarhome2.png', alt: 'Yes', width: 32, height: 32, class: 'rounded-circle border border-white' %>
               </li>
               <li class="d-flex align-items-center me-3">
-                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+                <i class="bi bi-geo-fill me-2"></i>
                 <small>Pakistan</small>
               </li>
               <li class="d-flex align-items-center">
-                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
+                <i class="bi bi-calendar3 me-2"></i>
                 <small>4d</small>
               </li>
             </ul>
@@ -56,11 +56,11 @@
                 <%= image_tag 'avatarhome3.png', alt: 'Yes', width: 32, height: 32, class: 'rounded-circle border border-white' %>
               </li>
               <li class="d-flex align-items-center me-3">
-                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+                <i class="bi bi-geo-fill me-2"></i>
                 <small>California</small>
               </li>
               <li class="d-flex align-items-center">
-                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
+                <i class="bi bi-calendar3 me-2"></i>
                 <small>5d</small>
               </li>
             </ul>
@@ -70,13 +70,29 @@
     </div>
   </div>
   <script>
-  const options = ["games night", "pub crawl", "museum trip", "date night", "catch up"];
-  const changingText = document.getElementById("changing-text");
+const options = ["games night", "pub crawl", "museum trip", "date night", "catch up", "bike ride", "road trip", "club night", "movie night", "picnic", "beach day", "hike", "camping trip", "concert", "karaoke night", "dinner party", "cooking class", "wine tasting", "charity run", "volunteer day", "epic gig", "theatre visit", "perfect day", "weekend away", "adventure", "party", "night out", "day out", "festival fun", "ski trip", "family visit", "european tour", "5-A-Side", "football match", "golf day", "tennis match", "swimming session", "fun run", "dance class", "gallery tour", "fishing trip", "beach day", "BBQ", "garden party", "camping adventure", "celebration", "netflix & chill", "company meeting", "away day", "makeover", "spa day", "shopping spree", "beauty treatment", "uni reunion", "birthday party", "wedding", "baby shower", "christening", "graduation", "anniversary", "retirement party", "holiday", "city break", "day trip", "night out", "date night", "pub crawl", "museum trip", "beach day", "picnic", "camping trip", "concert", "karaoke night", "dinner party", "cooking class", "wine tasting", "charity run", "volunteer day", "epic gig", "perfect day", "weekend away", "adventure", "party", "night out", "day out", "festival fun", "ski trip", "family visit", "european tour", "5-A-Side", "golf day", "tennis match", "swimming session", "fun run", "dance class", "gallery tour", "fishing trip", "beach day", "BBQ", "garden party", "camping adventure", "celebration", "netflix & chill", "company meeting", "away day", "makeover", "spa day", "shopping spree", "beauty treatment", "uni reunion", "birthday party", "wedding", "baby shower", "christening", "graduation", "anniversary", "retirement party", "holiday", "road trip", "city break", "weekend away", "day trip", "night out", "date night", "pub crawl", "museum trip", "beach day", "picnic", "camping trip", "concert", "karaoke night", "dinner party", "cooking class", "wine tasting", "charity run", "volunteer day", "epic gig", "football match", "weekend away", "adventure", "party", "night out", "day out", "festival fun", "ski trip", "family visit", "european tour", "5-A-Side", "football match", "golf day", "tennis match", "swimming session", "fun run", "dance class", "gallery tour", "fishing trip", "beach day", "BBQ", "garden party", "camping adventure", "celebration", "netflix & chill", "company meeting", "away day", "friends night", "sit off", "stoners session", "band practice", "dress rehearsal", "family reunion", "hot box", "pub crawl", "conference", "big day out"];
+const changingText = document.getElementById("changing-text");
 
-  function changeText() {
-    const randomIndex = Math.floor(Math.random() * options.length);
-    changingText.textContent = options[randomIndex];
+let currentIndex = 0;
+let isSpeedingUp = true;
+let intervalId = setInterval(changeText, 200);
+
+function changeText() {
+  changingText.textContent = options[currentIndex];
+  currentIndex = (currentIndex + 1) % options.length;
+}
+
+setInterval(() => {
+  if (isSpeedingUp) {
+    clearInterval(intervalId);
+    intervalId = setInterval(changeText, 100);
+    isSpeedingUp = false;
+  } else {
+    clearInterval(intervalId);
+    intervalId = setInterval(changeText, 800);
+    isSpeedingUp = true;
   }
+}, 5000);
 
-  setInterval(changeText, 2000);
+
 </script>

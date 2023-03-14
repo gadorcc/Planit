@@ -1,5 +1,5 @@
 <%= simple_form_for @plan, data: { controller: 'flatpickr' } do |f| %>
-  <%= f.input :title, label: "What's the plan?"%>
+  <%= f.input :title, label: "What's the plan?" %>
   <%= f.input :description %>
   <%= f.input :start_datetime, label: "Set start ", as: :string, input_html: { data: { flatpickr_target: "startDate" } } %>
   <%= f.input :end_datetime, label: "Set end ", as: :string, input_html: { data: { flatpickr_target: "endDate" } } %>
