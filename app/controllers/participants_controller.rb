@@ -25,9 +25,9 @@ class ParticipantsController < ApplicationController
   private
 
 
-  def user_params		   def user_params
-    params.require(:user).permit(:nickname)		     params.require(:user).permit(:nickname)
-  end		   end
+  def user_params
+    params.require(:user).permit(:nickname)
+  end
 
   def participant_params
     params.require(:participant).permit(:status)
