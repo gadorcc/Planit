@@ -1,5 +1,4 @@
 class ParticipantsController < ApplicationController
-
   def create
     @plan = Plan.find(params[:plan_id])
     @participant = Participant.new
@@ -18,9 +17,7 @@ class ParticipantsController < ApplicationController
     @participant.user = current_user
     @participant.update!(participant_params)
     redirect_to plan_path(@participant.plan)
-
   end
-
 
   private
 
