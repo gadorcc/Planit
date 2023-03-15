@@ -1,14 +1,6 @@
 <%= simple_form_for([@plan, @current_participant]) do |f| %>
-   <%=f.input :status, as: :hidden, input_html: {value: "Going"}  %>
-   <%= submit_tag "Going", class: "btn btn-primary" %>
- <% end %>
-
- <%= simple_form_for([@plan, @current_participant]) do |f| %>
-   <%=f.input :status, as: :hidden, input_html: {value: "Maybe"}  %>
-   <%= submit_tag "Maybe", class: "btn btn-primary" %>
- <% end %>
-
- <%= simple_form_for([@plan, @current_participant]) do |f| %>
-   <%=f.input :status, as: :hidden, input_html: {value: "Not\ Going"}  %>
-   <%= submit_tag "Not Going", class: "btn btn-primary" %>
- <% end %>
+  <div class="form-group d-flex align-items-center mb-3 mt-3">
+    <%= submit_tag "+", class: "btn btn-primary rounded-circle me-2" %>
+    <%=f.input :status, collection: Participant::STATUSES, label: false%>
+  </div>
+<% end %>

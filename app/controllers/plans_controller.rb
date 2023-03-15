@@ -9,7 +9,8 @@ class PlansController < ApplicationController
     @plans_participant = @plans_active.joins(:participants).where(participants: { user_id: current_user.id })
     @plans_active_all = @plans_planner && @plans_participant
     @plans_going_all = @plans_participant.joins(:participants).where(participants: { status: "Going" }) && @plans_planner
-    @plans_participant_status = @plans_participant.joins(:participants).where.not(participants: { status: "Going" })
+    @plans_participant_status = @plans_participant.joins(:participants).where.not(participants: { status: "Maybe" })
+    @plans_participant_status_decline = @plans_participant.joins(:participants).where(participants: { status: "Not/ Going"})
     @participant = Participant.all
     # @participant = Participant.find_by(user_id: current_user.id)
   end
@@ -23,7 +24,6 @@ class PlansController < ApplicationController
     @plan.planner_id = current_user.id
     @plan.image = api_image
     @plan.save!
-    sets_user_participant(@plan)
     redirect_to plan_path(@plan)
   end
 
@@ -37,6 +37,8 @@ class PlansController < ApplicationController
     @current_participant = Participant.find_by(user: current_user)
     @participants = @plan.participants
     @plans = @plan
+    numero = @plan.planner_id
+    @organiser = User.find_by_id(numero)
     @markers =
       [{
         lat: @plan.latitude,
@@ -82,11 +84,4 @@ class PlansController < ApplicationController
     @plan.image = @photo.src["large"]
   end
 
-  def sets_user_participant(plan)
-    participant = Participant.new
-    participant.user_id = current_user.id
-    participant.plan_id = plan.id
-    participant.status = "Going"
-    participant.save!
-  end
 end
