@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'CocoSharpXS';
+  src: url('CocoSharpXS-Regular.eot'); /* IE9 Compat Modes */
+  src: url('CocoSharpXS-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('CocoSharpXS-Regular.woff2') format('woff2'), /* Modern Browsers */
+       url('CocoSharpXS-Regular.woff') format('woff'), /* Modern Browsers */
+       url('CocoSharpXS-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('CocoSharpXS-Regular.svg#CocoSharpXS-Regular') format('svg'); /* Legacy iOS */
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+$coco-sharp-xs: "CocoSharpXS", "Helvetica", "sans-serif";
+
+.cocoxs {
+  font-family: $coco-sharp-xs !important;
+}
