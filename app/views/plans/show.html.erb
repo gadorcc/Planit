@@ -10,8 +10,8 @@
                   } %>
 
 <% if @organiser != current_user %>
-  <div class="d-flex align-items-center">
-    <p> <%= render "shared/add_status_form" %> </p>
+  <div class="d-flex align-items-center" data-controller="dropdown">
+    <%= render "shared/add_status_form" %>
   </div>
 <% end %>
 <div class="d-flex align-items-center">
