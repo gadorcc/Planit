@@ -20,6 +20,7 @@ class PlansController < ApplicationController
   end
 
   def create
+
     @plan = Plan.new(plan_params)
     @plan.planner_id = current_user.id
     @plan.image = api_image
@@ -55,7 +56,7 @@ class PlansController < ApplicationController
 
   def update
     @plan.update(plan_params)
-    # redirect_to plan_path(@plan)
+    redirect_to plan_path(@plan)
   end
 
   def destroy

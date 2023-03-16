@@ -1,5 +1,5 @@
 <%= simple_form_for([@plan, @current_participant]) do |f| %>
-  <div class="form-group d-flex align-items-center mb-3 mt-3">
+  <div class="form-group d-flex align-items-center mb-3 mt-3" data-controller="dropdown" data-action="onchange->dropdown#change_status">
     <%= submit_tag "+", class: "btn btn-primary rounded-circle me-2" %>
     <%=f.input :status, collection: Participant::STATUSES, label: false%>
   </div>

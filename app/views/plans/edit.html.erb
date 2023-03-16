@@ -1,2 +1,7 @@
 <h1>Plans#edit</h1>
 <p>Find me in app/views/plans/edit.html.erb</p>
+<div class="container-fluid">
+<div class="row gx-0 mt-3">
+<%= render "shared/add_plan_form" %>
+<%= link_to 'Back', plan_path(@plan) %>
+</div>

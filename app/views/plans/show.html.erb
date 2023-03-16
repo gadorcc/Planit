@@ -1,9 +1,14 @@
 <img src="<%= @plan.image %>" alt="" class="plan-image">
-<div class="container-fluid bg-white">
+<div class="container-fluid bg-white" >
 <div class="card">
   <div class="card-body">
 <h1 class="display-6"><%= @plan.title %> </h1>
     <p> <%= @plan.description %> </p>
+    <%= link_to '<i class="bi bi-pencil-fill"></i>'.html_safe, edit_plan_path %>
+    <%= link_to '<i class="bi bi-trash-fill"></i>'.html_safe, plan_path(@plan), data: {
+                    turbo_method: :delete
+                  } %>
+
 <% if @organiser != current_user %>
   <div class="d-flex align-items-center">
     <p> <%= render "shared/add_status_form" %> </p>
