@@ -1,5 +1,5 @@
 class Participant < ApplicationRecord
-  STATUSES = %w[Pending Going Not\Going Maybe]
+  STATUSES = %w[Pending Going Not\ Going Maybe]
   belongs_to :user
   belongs_to :plan
   has_many :plans, -> { order(start_datetime: :asc) }
