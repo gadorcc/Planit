@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'CocoSharpL';
+  src: url('CocoSharpL-Bold.eot'); /* IE9 Compat Modes */
+  src: url('CocoSharpL-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('CocoSharpL-Bold.woff2') format('woff2'), /* Modern Browsers */
+       url('CocoSharpL-Bold.woff') format('woff'), /* Modern Browsers */
+       url('CocoSharpL-Bold.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('CocoSharpL-Bold.svg#CocoSharpL-Bold') format('svg'); /* Legacy iOS */
+  font-style: normal;
+  font-weight: bold;
+  text-rendering: optimizeLegibility;
+}
+$coco-sharp-l: "CocoSharpL", "Helvetica", "sans-serif";
+
+.cocol {
+  font-family: $coco-sharp-l !important;
+}
+h3 {
+  font-family: $coco-sharp-l !important;
+}
