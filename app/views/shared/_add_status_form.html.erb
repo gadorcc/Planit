@@ -9,6 +9,6 @@
  <% end %>
 
  <%= simple_form_for([@plan, @current_participant]) do |f| %>
-   <%=f.input :status, as: :hidden, input_html: {value: "Not\Going"}  %>
+   <%=f.input :status, as: :hidden, input_html: {value: "Not\ Going"}  %>
    <%= submit_tag "Not Going", class: "btn btn-primary" %>
  <% end %>
