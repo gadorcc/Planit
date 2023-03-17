@@ -23,6 +23,10 @@ class ParticipantsController < ApplicationController
     @participant.update!(participant_params)
     redirect_to plan_path(@participant.plan)
 
+    # respond_to do |format|
+    #   format.json { render json: @participant.user.status }
+    # end
+
   end
 
   private

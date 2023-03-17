@@ -10,6 +10,15 @@ export default class extends Controller {
   changeStatus() {
     // this.statusTarget.value
     console.log(this.statusTarget.value);
-    console.log("mojon")
+    // fetch(this.statusTarget.value, {
+    //   method: "PATCH",
+    //   headers: {"Accept": "application/json"},
+    //   body: new StatusData(this.statusTarget)
+    // })
+    // .then(response => response.json())
+    // .then((data) => {
+    //   console.log(data)
+    // })
   }
+
 }
