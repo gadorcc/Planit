@@ -1,0 +1,10 @@
+meta_product_name: "Planit"
+meta_title: "Planit - Planning assistant hub for social gatherings and events"
+meta_description: "Relevant description"
+meta_image: "cover.png" # should exist in `app/assets/images/`
+
+# og:title
+# og:description
+# og:type
+# og:url
+# og:image

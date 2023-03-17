@@ -22,3 +22,24 @@
 .avatar-edit {
   max-width: 300px;
 }
+
+img.Going {
+
+  border: 4px solid rgb(50, 205, 50);
+  border-radius: 50%;
+}
+
+img.Maybe {
+  border: 4px solid orange;
+  border-radius: 50%;
+}
+
+img.Pending {
+  border: 4px solid rgb(164, 162, 162);
+  border-radius: 50%;
+}
+
+img.NotGoing {
+  border: 4px solid rgb(208, 62, 62);
+  border-radius: 50%;
+}
