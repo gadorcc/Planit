@@ -1,6 +1,11 @@
 <div class="container-fluid">
 <p class="mt-3 mb-0">Hello <%= current_user.nickname %></p>
-    <h1 class="cocol mt-0 mb-3">Your upcoming plans</h1>
+<!-- Back end testing -->
+<% @plans_going_all.each do |plan| %>
+<%= plan.title %>
+<% end %>
+  <h1 class="cocol mt-0 mb-3">Your upcoming plans</h1>
+<!-- Back end testing -->
 <!-- Going New Large Card style -->
 <div class="row px-1 mb-3">
 <div class="row flex-nowrap overflow-auto">
@@ -69,7 +74,7 @@
                     </div>
                 </div> <!-- on small screens, take up the entire width of the row and order it first -->
                 <div class="col order-1">
-                    <img src= <%= @plans.first.image %> class="img-fluid rounded-start" alt="">
+                    <img src= <%= plan.image %> class="img-fluid rounded-start" alt="">
                 </div>
             </div>
         </div>

@@ -7,10 +7,10 @@ class PlansController < ApplicationController
     @plans_active = @plans.where(start_datetime: (Time.now)..)
     @plans_planner = @plans_active.where(planner_id: current_user.id)
     @plans_participant = @plans_active.joins(:participants).where(participants: { user_id: current_user.id })
-    @plans_active_all = @plans_planner && @plans_participant
-    @plans_going_all = @plans_participant.joins(:participants).where(participants: { status: "Going" }) && @plans_planner
-    @plans_participant_status = @plans_participant.joins(:participants).where.not(participants: { status: "Maybe" })
-    @plans_participant_status_decline = @plans_participant.joins(:participants).where(participants: { status: "Not/ Going"})
+    @plans_going_participant = @plans_participant.joins(:participants).where(participants: { status: "Going" })
+    @plans_going_all = @plans_going_participant | @plans_planner
+    @plans_participant_status = @plans_participant.joins(:participants).where.not(participants: { status: ["Going", "Not Going"] })
+    @plans_participant_status_decline = @plans_participant.joins(:participants).where(participants: { status: "Not Going" })
     @participant = Participant.all
     # @participant = Participant.find_by(user_id: current_user.id)
   end

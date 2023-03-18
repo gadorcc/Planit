@@ -13,15 +13,10 @@
   <div class="p-2"><%= link_to '<i class="bi bi-trash-fill"></i>'.html_safe, plan_path(@plan), data: {
                     turbo_method: :delete
                   } %></div>
-
 </div>
-
-
     </div>
   </div>
-
     <p> <%= @plan.description %> </p>
-
 
 <% if @organiser != current_user %>
   <div class="d-flex align-items-center" data-controller="dropdown">
@@ -48,9 +43,10 @@
   <i class="bi bi-people-fill"></i>
   <div class="ms-2 participants">
     <% @plan.participants.each do |participant| %>
-      <%# <small class="d-inline-flex mb-1 px-2 py-1">
-          <%= cl_image_tag(participant.user.avatar_picture.key, alt: 'Yes', width: 32, height: 32, class: participant.status) %>
-      </small> %>
+      <small class="d-inline-flex mb-1 px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">
+        <%= participant.user.nickname %>
+        <%= participant.status %>
+      </small>
     <% end %>
   </div>
 </div>
