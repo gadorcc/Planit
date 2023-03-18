@@ -38,32 +38,32 @@
       <p><%= @plan.description %></p>
 
 
-<div class="d-flex align-items-center">
+<div class="d-flex align-items-center pb-1">
   <i class="bi bi-piggy-bank-fill"></i>
   <span class="ms-2">£<%= @plan.cost %></span></span>
 </div>
-<div class="d-flex align-items-center">
+<div class="d-flex align-items-center pb-1">
   <i class="bi bi-stars"></i>
   <span class="ms-2"><%= @organiser == current_user ? "You are" : "#{@organiser.nickname} is"%> organising</span>
 
 </div>
-<div class="d-flex align-items-center">
+<div class="d-flex align-items-center pb-1">
   <i class="bi bi-clock-fill"></i>
   <span class="ms-2"><%= @plan.start_datetime.strftime('%a %e %b %l:%M %p') %></span>
 </div>
-<div class="d-flex align-items-center">
+<div class="d-flex align-items-center pb-1">
   <i class="bi bi-geo-alt-fill"></i>
   <span class="ms-2"><%= @plan.location %></span>
 </div>
-<div class="d-flex align-items-center">
+<div class="d-flex align-items-center pb-1">
   <i class="bi bi-people-fill"></i>
   <div class="ms-2 participants">
     <% @plan.participants.each do |participant| %>
       <small class="d-inline-flex mb-1 px-2 py-1">
           <% if participant.user.avatar_picture.present? %>
-            <%= cl_image_tag(participant.user.avatar_picture.key, alt: 'Yes', width: 32, height: 32, class: participant.status) %>
+            <%= cl_image_tag(participant.user.avatar_picture.key, alt: 'Yes', width: 42, height: 42, class: participant.status) %>
           <% else %>
-            <%= image_tag "avatarhome1.png", alt: "Avatar", width: 32, height: 32, class: participant.status %>
+            <%= image_tag "avatarhome1.png", alt: "Avatar", width: 42, height: 42, class: participant.status %>
           <% end %>
       </small>
     <% end %>
