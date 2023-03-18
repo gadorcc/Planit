@@ -9,7 +9,8 @@ class PlansController < ApplicationController
     @plans_participant = @plans_active.joins(:participants).where(participants: { user_id: current_user.id })
     @plans_going_participant = @plans_participant.joins(:participants).where(participants: { status: "Going" })
     @plans_going_all = @plans_going_participant | @plans_planner
-    @plans_participant_status = @plans_participant.joins(:participants).where.not(participants: { status: ["Going", "Not Going"] })
+    @plans_participant_status = @plans_participant.joins(:participants).where.not(participants: { status: ["Going",
+                                                                                                           "Not Going"] })
     @plans_participant_status_decline = @plans_participant.joins(:participants).where(participants: { status: "Not Going" })
     @participant = Participant.all
     # @participant = Participant.find_by(user_id: current_user.id)
@@ -82,7 +83,6 @@ class PlansController < ApplicationController
     @client = Pexels::Client.new(ENV.fetch('PEXELS_API_KEY'))
     @photo = @client.photos.search("#{@plan.title}", per_page: 1).first
     # photo = @client.photos[@photo.id]
-    @plan.image = @photo.src["large"]
+    @plan.image = @photo.src["landscape"]
   end
-
 end
