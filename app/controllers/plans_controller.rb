@@ -20,9 +20,9 @@ class PlansController < ApplicationController
   end
 
   def create
-
     @plan = Plan.new(plan_params)
     @plan.planner_id = current_user.id
+    # raise
     @plan.image = api_image
     @plan.save!
     redirect_to plan_path(@plan)
@@ -35,7 +35,7 @@ class PlansController < ApplicationController
   def show
     @users = User.all
     @participant = Participant.new
-    @current_participant = Participant.find_by(user: current_user)
+    @current_participant = @plan.participants.find_by(user: current_user)
     @participants = @plan.participants
     @plans = @plan
     numero = @plan.planner_id

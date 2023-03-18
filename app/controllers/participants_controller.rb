@@ -18,13 +18,10 @@ class ParticipantsController < ApplicationController
   end
 
   def update
-    @plan = Plan.find(params[:plan_id])
-    @participant = Participant.find_by(user: current_user)
-    @participant.user = current_user
-    @participant.plan = @plan
+    @participant = Participant.find(params[:id])
     @participant.update(participant_params)
-    redirect_to plan_path(@plan)
 
+    redirect_to plan_path(@participant.plan)
   end
 
   private
