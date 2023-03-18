@@ -7,9 +7,10 @@ class PlansController < ApplicationController
     @plans_active = @plans.where(start_datetime: (Time.now)..)
     @plans_planner = @plans_active.where(planner_id: current_user.id)
     @plans_participant = @plans_active.joins(:participants).where(participants: { user_id: current_user.id })
-    @plans_active_all = @plans_planner && @plans_participant
-    @plans_going_all = @plans_participant.joins(:participants).where(participants: { status: "Going" }) && @plans_planner
-    @plans_participant_status = @plans_participant.joins(:participants).where.not(participants: { status: "Going" })
+    @plans_going_participant = @plans_participant.joins(:participants).where(participants: { status: "Going" })
+    @plans_going_all = @plans_going_participant | @plans_planner
+    @plans_participant_status = @plans_participant.joins(:participants).where.not(participants: { status: ["Going", "Not Going"] })
+    @plans_participant_status_decline = @plans_participant.joins(:participants).where(participants: { status: "Not Going" })
     @participant = Participant.all
     # @participant = Participant.find_by(user_id: current_user.id)
   end
@@ -21,9 +22,9 @@ class PlansController < ApplicationController
   def create
     @plan = Plan.new(plan_params)
     @plan.planner_id = current_user.id
+    # raise
     @plan.image = api_image
     @plan.save!
-    sets_user_participant(@plan)
     redirect_to plan_path(@plan)
   end
 
@@ -34,9 +35,11 @@ class PlansController < ApplicationController
   def show
     @users = User.all
     @participant = Participant.new
-    @current_participant = Participant.find_by(user: current_user)
+    @current_participant = @plan.participants.find_by(user: current_user)
     @participants = @plan.participants
     @plans = @plan
+    numero = @plan.planner_id
+    @organiser = User.find_by_id(numero)
     @markers =
       [{
         lat: @plan.latitude,
@@ -53,7 +56,7 @@ class PlansController < ApplicationController
 
   def update
     @plan.update(plan_params)
-    # redirect_to plan_path(@plan)
+    redirect_to plan_path(@plan)
   end
 
   def destroy
@@ -82,11 +85,4 @@ class PlansController < ApplicationController
     @plan.image = @photo.src["large"]
   end
 
-  def sets_user_participant(plan)
-    participant = Participant.new
-    participant.user_id = current_user.id
-    participant.plan_id = plan.id
-    participant.status = "Going"
-    participant.save!
-  end
 end

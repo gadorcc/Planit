@@ -1,16 +1,16 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
   <div class="container-fluid">
-    <%= link_to "/plans", class: "navbar-brand" do %>
+    <%= link_to plans_path, class: "navbar-brand" do %>
       <%= image_tag "planit.logo.pg.svg" %>
     <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
       <span class="navbar-toggler-icon"></span>
       <% if user_signed_in? %>
         <% if current_user.avatar_picture.present? %>
-            <%= cl_image_tag(current_user.avatar_picture.key, class: "ms-2", width: 30, height: 30, crop: :fill, gravity: :face) %>
+            <%= cl_image_tag(current_user.avatar_picture.key, class: " ", width: 30, height: 30, crop: :fill, gravity: :face) %>
         <% else %>
-          <%= image_tag "avatarhome1.png", alt: "Avatar", class: "ms-2" %>
-        <% end %>
+        <%= image_tag "avatarhome1.png", alt: "Avatar", class: " " %>
+      <% end %>
       <% end %>
     </button>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
