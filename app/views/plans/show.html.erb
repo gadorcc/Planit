@@ -58,8 +58,8 @@
 <div class="d-flex align-items-center">
   <i class="bi bi-people-fill"></i>
   <div class="ms-2 participants">
-   <% @plan.participants.each do |participant| %>
-      <small class=“d-inline-flex mb-1 px-2 py-1”>
+    <% @plan.participants.each do |participant| %>
+      <small class="d-inline-flex mb-1 px-2 py-1">
           <% if participant.user.avatar_picture.present? %>
             <%= cl_image_tag(participant.user.avatar_picture.key, alt: 'Yes', width: 32, height: 32, class: participant.status) %>
           <% else %>
