@@ -29,7 +29,8 @@
 </div>
 <div class="d-flex align-items-center">
   <i class="bi bi-stars"></i>
-  <span class="ms-2"><%=@organiser == current_user ? "You are" : "#{@organiser.nickname} is"%> organising</span>
+  <span class="ms-2"><%= @organiser == current_user ? "You are" : "#{@organiser.nickname} is"%> organising</span>
+
 </div>
 <div class="d-flex align-items-center">
   <i class="bi bi-clock-fill"></i>
