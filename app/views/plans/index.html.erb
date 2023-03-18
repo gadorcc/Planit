@@ -105,9 +105,38 @@
 <!-- Suggestion Card Section -->
     <div class="row gx-0">
         <h2 class="cocol">Ideas for a new plans</h2>
-        <div class="row flex-nowrap overflow-auto"> <%= render "shared/evntcard" %> <%= render "shared/evntcard" %> <%= render "shared/evntcard" %> <%= render "shared/evntcard" %> <%= render "shared/evntcard" %> <%= render "shared/evntcard" %> <%= render "shared/evntcard" %>
+        <div class="row flex-nowrap overflow-auto">
+<!-- Suggestion Card single -->
+          <div class="card mb-3 me-2">
+  <div class="card-body row">
+    <div class="col-4">
+      <button type="button" class="btn btn-warning">
+        <i class="fa-solid fa-pizza-slice"></i>
+      </button>
+    </div>
+    <div class="col-8 text-end">
+      <h5 class="card-title">Pizza Night</h5>
+    </div>
+  </div>
+</div>
+<div class="card mb-3 me-2">
+  <div class="card-body row">
+    <div class="col-4">
+      <button type="button" class="btn btn-danger">
+        <i class="fa-solid fa-guitar"></i>
+      </button>
+    </div>
+    <div class="col-8 text-end">
+      <h5 class="card-title">Gig</h5>
+    </div>
+  </div>
+</div>
+<!-- Suggestion Card Single End -->
         </div>
-        <div>
+  </div>
+
+<!-- Suggestion Card Section -->
+    <div>
         <button class="menu-btn">+
           <%= link_to new_plan_path do %>
             <span class="bi bi-plus-circle"></span>
@@ -116,7 +145,8 @@
           <span class="bi bi-patch-question"></span>
         </button>
         </div>
-        </div>
+
+
             <script>
                 const menuBtn = document.querySelector('.menu-btn');
                 menuBtn.addEventListener('click', function() {
