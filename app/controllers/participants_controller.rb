@@ -18,14 +18,12 @@ class ParticipantsController < ApplicationController
   end
 
   def update
-    @participant = Participant.find_by user_id: current_user.id
+    @plan = Plan.find(params[:plan_id])
+    @participant = Participant.find_by(user: current_user)
     @participant.user = current_user
-    @participant.update!(participant_params)
-    redirect_to plan_path(@participant.plan)
-
-    # respond_to do |format|
-    #   format.json { render json: @participant.user.status }
-    # end
+    @participant.plan = @plan
+    @participant.update(participant_params)
+    redirect_to plan_path(@plan)
 
   end
 
