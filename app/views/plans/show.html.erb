@@ -28,16 +28,16 @@
           <h1 class="display-6"><%= @plan.title %></h1>
         </div>
         <div class="col d-flex justify-content-end">
-  <%= render "shared/add_status_form" %>
-</div>
-      </div>
-      <p><%= @plan.description %></p>
-
-<% if @organiser != current_user %>
+  <% if @organiser != current_user %>
   <div class="d-flex align-items-center" data-controller="dropdown">
     <%= render "shared/add_status_form" %>
   </div>
 <% end %>
+</div>
+      </div>
+      <p><%= @plan.description %></p>
+
+
 <div class="d-flex align-items-center">
   <i class="bi bi-piggy-bank-fill"></i>
   <span class="ms-2">£<%= @plan.cost %></span></span>
