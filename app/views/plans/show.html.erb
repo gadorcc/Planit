@@ -18,7 +18,11 @@
   <div class="ms-2 participants">
     <% @plan.participants.each do |participant| %>
       <small class="d-inline-flex mb-1 px-2 py-1">
-          <%= cl_image_tag(participant.user.avatar_picture.key, alt: 'Yes', width: 32, height: 32, class: participant.status) %>
+          <% if participant.user.avatar_picture.present? %>
+            <%= cl_image_tag(participant.user.avatar_picture.key, alt: 'Yes', width: 32, height: 32, class: participant.status) %>
+          <% else %>
+            <%= image_tag "avatarhome1.png", alt: "Avatar", width: 32, height: 32, class: participant.status %>
+          <% end %>
       </small>
     <% end %>
   </div>
