@@ -10,18 +10,25 @@ class ParticipantsController < ApplicationController
     else
       @participant.user = @user
       if @participant.save
-        redirect_to plan_path(@plan)
+        respond_to do |format|
+          format.html { redirect_to plan_path(@plan) }
+          format.js
+        end
       else
         redirect_to plan_path(@plan), status: :unprocessable_entity
       end
     end
+
   end
 
   def update
     @participant = Participant.find(params[:id])
     @participant.update(participant_params)
-
-    redirect_to plan_path(@participant.plan)
+    respond_to do |format|
+      format.js
+      format.html
+    end
+    # redirect_to plan_path(@participant.plan)
   end
 
   private
