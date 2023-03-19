@@ -29,3 +29,30 @@
 .offcanvas-title img {
   width: 75px;
 }
+
+.offcanvas-header {
+  background-color: $moonstone;
+  border-bottom: 1px solid $hot-pink;
+}
+
+.offcanvas-body {
+  background-color: $moonstone;
+  color: white;
+}
+
+.offcanvas-body a {
+  color: white;
+}
+
+.offcanvas-title svg {
+  fill: white;
+}
+
+.account-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-link {
+  color: white !important;
+}

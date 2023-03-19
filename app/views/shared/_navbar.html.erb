@@ -15,38 +15,35 @@
     </button>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><%= image_tag "planit.logo.pg.svg" %></h5>
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><%= image_tag "planitwhite-logo.svg" %></h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mb-3">
           <% if user_signed_in? %>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Account
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#"><%= link_to " Profile", edit_user_registration_path %>
-</a></li>
-                <li><a class="dropdown-item" href="#">Details</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/plans">Plans</a>
-            </li>
-              </ul>
-              <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-              </form>
-          <% else %>
-            <li class="nav-item">
-              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-</li>
+  <li class="nav-item">
+    <div class="account-section mt-4">
+      <h4 class="header">
+        Account
+      </h4>
+      <a class="nav-link" href="<%= edit_user_registration_path %>">
+        Profile
+      </a>
+    </div>
+  </li>
+   <li class="nav-item">
+    <a class="nav-link" href="/plans">Plans</a>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
+  </li>
+</ul>
+
+<% else %>
+  <li class="nav-item">
+    <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+  </li>
+
 <li class="nav-item">
 <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
 </li>
