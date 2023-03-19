@@ -82,7 +82,7 @@ class PlansController < ApplicationController
     @client = Pexels::Client.new(ENV.fetch('PEXELS_API_KEY'))
     @photo = @client.photos.search("#{@plan.title}", per_page: 1).first
     # photo = @client.photos[@photo.id]
-    @plan.image = @photo.src["large"]
+    @plan.image = @photo.src["landscape"]
   end
 
 end
