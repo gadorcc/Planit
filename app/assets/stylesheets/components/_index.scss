@@ -13,13 +13,4 @@
 @import "footer";
 @import "form_buttons";
 @import "custom_card";
-
-.btn.btn-outline-success.Pending {
-  color: $cyan;
-  border-color: $cyan;
-}
-
-.btn.btn-outline-success.Maybe {
-  color: $yellow;
-  border-color: $yellow;
-}
+@import "status_button";
