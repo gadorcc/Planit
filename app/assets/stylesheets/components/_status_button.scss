@@ -7,3 +7,16 @@
   color: $yellow;
   border-color: $yellow;
 }
+.btn.btn-outline-success.Pending:hover {
+  color: $cyan;
+  border-color: $cyan;
+}
+
+.btn.btn-outline-success.Maybe:hover {
+  color: $yellow;
+  border-color: $yellow;
+}
+
+.btn:hover {
+  background-color: #19875400 !important;
+  }
