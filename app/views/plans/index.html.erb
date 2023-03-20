@@ -54,7 +54,7 @@
                     <!-- add the card content in a card-body div -->
                     <div class="card-body d-flex flex-column justify-content-between ps-0 pe-3 pt-3 pb-3">
                         <div>
-                            <h5 class="card-title text-muted"><%= plan.title %></h5>
+                            <h5 class="card-title"><%= plan.title %></h5>
                              <h6 class="cocol card-subtitle text-muted mb-2"><% if plan.start_datetime.strftime('%-d') < plan.end_datetime.strftime('%-d') %> <%= plan.start_datetime.strftime('%a %e %b · %-l:%M') %>		                             <h6 class="cocol card-subtitle text-muted mb-2"><% if plan.start_datetime.strftime('%-d') < plan.end_datetime.strftime('%-d') %> <%= plan.start_datetime.strftime('%a %e %b · %-l:%M') %>
  -<%= plan.end_datetime.strftime('%a %-d %b · %-l:%M%P') %> <% else %> <%= plans.first.start_datetime.strftime('%a %e %b · %-l:%M') %>-<%= plans.first.end_datetime.strftime('%-l:%M%P') %> <% end %></h6>		 -<%= plan.end_datetime.strftime('%a %-d %b · %-l:%M%P') %> <% else %> <%= plan.start_datetime.strftime('%a %e %b · %-l:%M') %>-<%= plan.end_datetime.strftime('%-l:%M%P') %> <% end %></h6>
                               <p class="cocoxs card-text mb-2"> <%= plan.description %> </p>
@@ -92,7 +92,7 @@
      <div class="card light-border-subtle mb-3 me-2">
             <div class="card-body row">
                 <div class="col-9">
-                    <h5 class="card-title"><%= plan.title %></h5>
+                    <h5 class="card-title text-muted"><%= plan.title %></h5>
                     <h6 class="cocol card-subtitle text-muted mb-2"><% if plan.start_datetime.strftime('%-d') < plan.end_datetime.strftime('%-d') %> <p><%= plan.start_datetime.strftime('%a %e %b · %-l:%M') %>
 -<%= plan.end_datetime.strftime('%a %-d %b · %-l:%M%P') %></p> <% else %> <p class="time-mb"><%= plan.start_datetime.strftime('%a %e %b · %-l:%M') %>-<%= plan.end_datetime.strftime('%-l:%M%P') %></p> <% end %></h6>
                 </div>
