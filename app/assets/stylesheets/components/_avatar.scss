@@ -24,7 +24,7 @@
 }
 
 img.Going {
-  border: 3gitpx solid $green;
+  border: 3px solid $success;
   border-radius: 50%;
 }
 
@@ -38,7 +38,7 @@ img.Pending {
   border-radius: 50%;
 }
 
-img.NotGoing {
-  border: 3px solid $red;
+img.Not {
+  border: 3px solid #FD1015;
   border-radius: 50%;
 }
