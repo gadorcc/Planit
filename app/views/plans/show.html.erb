@@ -59,7 +59,13 @@
   <i class="bi bi-people-fill"></i>
   <div class="ms-2 participants" data-jumping-target="participant">
     <% @plan.participants.each do |participant| %>
-       <%= render "plans/participant_status", participant: participant %>
+       <small class="d-inline-flex mb-1 px-2 py-1">
+          <% if participant.user.avatar_picture.present? %>
+            <%= cl_image_tag(participant.user.avatar_picture.key, alt: 'Yes', width: 42, height: 42, class: participant.status) %>
+          <% else %>
+            <%= image_tag "avatarhome1.png", alt: "Avatar", width: 42, height: 42, class: participant.status %>
+          <% end %>
+      </small>
 
     <% end %>
   </div>
