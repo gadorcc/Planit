@@ -29,7 +29,8 @@
           </li>
           <li class="d-flex align-items-center">
             <i class="bi bi-calendar3 me-2"></i>
-            <small class="cocoxs">5d</small>
+            <small class="cocoxs">
+            <%= ((plan.start_datetime - DateTime.now)/86400).to_i %>d</small>
           </li>
         </ul>
       </div>

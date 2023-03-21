@@ -1,6 +1,7 @@
 class ParticipantsController < ApplicationController
 
   def create
+
     @plan = Plan.find(params[:plan_id])
     @participant = Participant.new
     @participant.plan = @plan
@@ -9,25 +10,21 @@ class ParticipantsController < ApplicationController
       redirect_to plan_path(@plan), notice: "You are already going"
     else
       @participant.user = @user
-      if @participant.save
-        respond_to do |format|
+      respond_to do |format|
+        if @participant.save
           format.html { redirect_to plan_path(@plan) }
-          format.js
+          format.json # Follow the classic Rails flow and look for a create.json view
+        else
+          format.html { redirect_to plan_path(@plan), status: :unprocessable_entity }
+          format.json # Follow the classic Rails flow and look for a create.json view
         end
-      else
-        redirect_to plan_path(@plan), status: :unprocessable_entity
       end
     end
-
   end
 
   def update
     @participant = Participant.find(params[:id])
     @participant.update(participant_params)
-    respond_to do |format|
-      format.js
-      format.html
-    end
     # redirect_to plan_path(@participant.plan)
   end
 
