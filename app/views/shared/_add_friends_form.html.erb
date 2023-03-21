@@ -1,5 +1,5 @@
 
-<%= simple_form_for([@plan, @participant], remote: true, data: {jumping_target: "form", action: "submit->jumping#send"}) do |f| %>
+<%= simple_form_for([@plan, @participant],data: {jumping_target: "form", action: "submit->jumping#send"}) do |f| %>
   <div class="form-group d-flex align-items-center mb-3 mt-3">
     <div class="submit-wrapper">
       <%= f.submit "+", class: "btn btn-primary rounded-circle me-2" %>
