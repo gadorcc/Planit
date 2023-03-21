@@ -30,20 +30,6 @@
   width: 75px;
 }
 
-.offcanvas-header {
-  background-color: $moonstone;
-  border-bottom: 1px solid $hot-pink;
-}
-
-.offcanvas-body {
-  background-color: $moonstone;
-  color: white;
-}
-
-.offcanvas-body a {
-  color: white;
-}
-
 .offcanvas-title svg {
   fill: white;
 }
@@ -53,6 +39,21 @@
   flex-direction: column;
 }
 
-.nav-link {
-  color: white !important;
+@media (max-width: 767px) {
+  .offcanvas-header,
+  .offcanvas-body {
+    background-color: #379cb0;
+  }
+  .header {
+    color: white;
+  }
+  .offcanvas-header {
+    border-bottom: 1px solid hotpink;
+  }
+  .nav-link {
+    color: white !important;
+  }
+  .offcanvas-body a {
+    color: $white;
+  }
 }
