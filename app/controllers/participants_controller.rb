@@ -21,7 +21,7 @@ class ParticipantsController < ApplicationController
   def update
     @participant = Participant.find(params[:id])
     @participant.update(participant_params)
-    # redirect_to plan_path(@participant.plan)
+    redirect_to plan_path(@participant.plan)
   end
 
   private
