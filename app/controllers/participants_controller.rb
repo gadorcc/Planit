@@ -10,10 +10,14 @@ class ParticipantsController < ApplicationController
       redirect_to plan_path(@plan), notice: "You are already going"
     else
       @participant.user = @user
-      if @participant.save
-        redirect_to plan_path(@plan)
-      else
-        redirect_to plan_path(@plan), status: :unprocessable_entity
+      respond_to do |format|
+        if @participant.save
+          format.html { redirect_to plan_path(@plan) }
+          format.json # Follow the classic Rails flow and look for a create.json view
+        else
+          format.html { redirect_to plan_path(@plan), status: :unprocessable_entity }
+          format.json # Follow the classic Rails flow and look for a create.json view
+        end
       end
     end
   end
