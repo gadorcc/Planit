@@ -16,8 +16,10 @@
         <ul class="d-flex list-unstyled mt-auto">
 
           <li class="nav-item dropdown">
-                <% if current_user.avatar_picture.present? %>
-              <%= cl_image_tag(current_user.avatar_picture.key, alt: 'Yes', width: 32, height: 32, class: "avatar-image rounded-circle border border-white") %>
+          <% numero = plan.planner_id %>
+          <%@organiser = User.find_by_id(numero) %>
+                <% if @organiser.avatar_picture.present? %>
+              <%= cl_image_tag(@organiser.avatar_picture.key, alt: 'Yes', width: 32, height: 32, class: "avatar-image rounded-circle border border-white") %>
           <li class="me-auto">
             <% else %>
               <%= image_tag "avatarhome1.png", alt: "Avatar", class: "ms-0 me-3" %>

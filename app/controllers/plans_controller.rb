@@ -13,6 +13,7 @@ class PlansController < ApplicationController
     @plans_participant_status_decline = @plans_participant.joins(:participants).where(participants: { status: "Not Going" })
     @participant = Participant.all
     # @participant = Participant.find_by(user_id: current_user.id)
+
   end
 
   def new
