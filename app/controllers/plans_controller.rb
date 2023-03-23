@@ -9,11 +9,11 @@ class PlansController < ApplicationController
     @plans_participant = @plans_active.joins(:participants).where(participants: { user_id: current_user.id })
     @plans_going_participant = @plans_participant.joins(:participants).where(participants: { status: "Going" })
     @plans_going_all = @plans_going_participant | @plans_planner
+    @plans_going_order = @plans_going_all.sort_by { |plan| plan[:start_datetime] }
     @plans_participant_status = @plans_participant.joins(:participants).where.not(participants: { status: ["Going", "Not Going"] })
     @plans_participant_status_decline = @plans_participant.joins(:participants).where(participants: { status: "Not Going" })
     @participant = Participant.all
     # @participant = Participant.find_by(user_id: current_user.id)
-
   end
 
   def new

@@ -7,7 +7,7 @@
 <!-- Going New Large Card style -->
 <div class="row px-1 mb-3">
 <div class="row flex-nowrap overflow-auto">
-   <% @plans_going_all.each do |plan| %>
+   <% @plans_going_order.each do |plan| %>
     <a href="<%= plan_path(plan) %>">
   <div class="col">
     <div class="card ms-1 me-2 card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: linear-gradient(-10deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.1)), url('<%= plan.image %>');">
@@ -106,7 +106,7 @@
 
 <!-- Suggestion Card Section -->
     <div class="row gx-0">
-        <h2 class="cocol">Ideas for a new plans</h2>
+        <h2 class="cocol">Ideas for new plans</h2>
         <div class="row flex-nowrap overflow-auto">
 <!-- Suggestion Card single -->
           <div class="card mb-3 me-2">
