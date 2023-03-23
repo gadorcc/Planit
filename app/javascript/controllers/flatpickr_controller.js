@@ -7,7 +7,7 @@ import flatpickr from "flatpickr";
     static targets = [ "startDate", "endDate" ]
 
     connect() {
-      // console.log("hola para mi")
+      console.log("hola para mi")
       flatpickr(this.startDateTarget, {
         enableTime: true,
         altInput: true,

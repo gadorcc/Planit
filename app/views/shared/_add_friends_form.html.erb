@@ -4,7 +4,7 @@
     <div class="submit-wrapper">
       <%= f.submit "+", class: "btn btn-primary rounded-circle me-2" %>
     </div>
-    <%= f.text_field :user, list: 'user-list', autocomplete: 'off', class: "form-control", placeholder: "Add your friend" %>
+    <%= f.text_field :user, list: 'user-list', autocomplete: 'off', class: "form-control", placeholder: "Add your friend", data: {jumping_target: "name"} %>
     <datalist id="user-list">
       <% for user in User.all.select(:nickname) %>
         <option><%= user.nickname %></option>
